@@ -19,6 +19,8 @@ export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) 
   const [state, setState] = useState('');
   const [hasGoal, setHasGoal] = useState<boolean | null>(null);
   const [goal, setGoal] = useState('');
+  const [isValidatingGoal, setIsValidatingGoal] = useState(false);
+  const [goalError, setGoalError] = useState<string | null>(null);
 
   const languages = [
     { value: 'telugu', label: 'Telugu' },
@@ -37,18 +39,49 @@ export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) 
     { value: 'delhi', label: 'Delhi' }
   ];
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (hasGoal === null) return;
     if (hasGoal && !goal.trim()) return;
-    
-    // Save the goal to session storage for the next screen
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('userGoal', goal);
-    }
-    
-    // If user has a goal, navigate to goal validation
+
+    // If user has a goal, validate it first
     if (hasGoal) {
-      router.push('/goal-validation');
+      setIsValidatingGoal(true);
+      setGoalError(null);
+
+      try {
+        console.log("🔍 Validating career goal before proceeding...");
+        const response = await fetch('/api/validate-goal-input', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userGoal: goal.trim() }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          console.error("❌ Invalid career goal:", data.message);
+          setGoalError(data.message || 'Invalid career goal. Please enter a valid profession.');
+          setIsValidatingGoal(false);
+          return;
+        }
+
+        console.log("✅ Career goal is valid, proceeding...");
+
+        // Save the goal to session storage for the next screen
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('userGoal', goal);
+        }
+
+        setIsValidatingGoal(false);
+        router.push('/goal-validation');
+
+      } catch (error) {
+        console.error("Error validating goal:", error);
+        setGoalError('Unable to validate career goal. Please try again.');
+        setIsValidatingGoal(false);
+      }
     } else {
       // If user doesn't have a goal, continue with onboarding
       onContinue({
@@ -171,13 +204,38 @@ export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) 
             <label className="text-[#333333] text-base font-medium leading-normal pb-2" htmlFor="current-goal">
               What is your current goal?
             </label>
-            <input 
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#333333] focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#F5F5F5] focus:border-[#19b357] h-14 placeholder:text-[#888888] p-3.5 text-base font-normal leading-normal"
+            <input
+              className={`form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#333333] focus:outline-0 focus:ring-0 border bg-[#F5F5F5] h-14 placeholder:text-[#888888] p-3.5 text-base font-normal leading-normal ${
+                goalError ? 'border-red-500 focus:border-red-500' : 'border-[#E0E0E0] focus:border-[#19b357]'
+              }`}
               id="current-goal"
               placeholder="e.g., AI Developer, Doctor, IAS..."
               value={goal}
-              onChange={(e) => setGoal(e.target.value)}
+              onChange={(e) => {
+                setGoal(e.target.value);
+                setGoalError(null); // Clear error when user types
+              }}
             />
+
+            {/* Error Message */}
+            {goalError && (
+              <div className="mt-3 bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-red-800">Invalid Career Goal</p>
+                    <p className="text-sm text-red-700 mt-1 whitespace-pre-line">{goalError}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Help Text */}
+            <p className="text-xs text-gray-500 mt-2">
+              Examples: Software Developer, Doctor, Teacher, Data Scientist, Civil Engineer, etc.
+            </p>
           </div>
         )}
       </div>
@@ -186,14 +244,24 @@ export default function OnboardingScreen({ onContinue }: OnboardingScreenProps) 
       <div className="py-4">
         <button
           className={`flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 text-white text-lg font-bold leading-normal tracking-[0.015em] ${
-            hasGoal === null || (hasGoal === true && !goal.trim())
+            hasGoal === null || (hasGoal === true && !goal.trim()) || isValidatingGoal
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-[#19b357] hover:bg-[#19b357]'
           }`}
           onClick={handleContinue}
-          disabled={hasGoal === null || (hasGoal === true && !goal.trim())}
+          disabled={hasGoal === null || (hasGoal === true && !goal.trim()) || isValidatingGoal}
         >
-          <span className="truncate">Continue</span>
+          {isValidatingGoal ? (
+            <div className="flex items-center gap-2">
+              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span className="truncate">Validating...</span>
+            </div>
+          ) : (
+            <span className="truncate">Continue</span>
+          )}
         </button>
       </div>
     </div>

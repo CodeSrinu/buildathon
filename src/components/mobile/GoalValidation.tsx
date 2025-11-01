@@ -46,6 +46,7 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
   const [pressureScore, setPressureScore] = useState<number | null>(null);
   const [validationSummary, setValidationSummary] = useState<string | null>(null);
   const [actionableInsights, setActionableInsights] = useState<{ superpower: string; thingToConsider: string } | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Goal validation questions for users with existing goals
   const questions: GoalValidationQuestion[] = [
@@ -136,7 +137,8 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
 
   const calculateValidationScore = async () => {
     setIsCalculating(true);
-    
+    setErrorMessage(null); // Clear any previous errors
+
     try {
       // Map answers to the validation quiz format
       const validationAnswers: ValidationQuizAnswers = {
@@ -146,20 +148,21 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
         preferredLearningStyle: answers[3] || "",
         confidenceRating: answers[4] || ""
       };
-      
+
       // Call validation service (which will use the API route)
       const validationResponse = await validateUserGoal(userGoal, validationAnswers);
-      
+
       // Calculate pressure score based on validation response
       const score = calculatePressureScore(validationResponse);
-      
+
       setPressureScore(score);
       setValidationSummary(validationResponse.validationSummary);
       setActionableInsights(validationResponse.actionableInsights);
-      
+
       setIsCalculating(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error validating goal:", error);
+      setErrorMessage(error.message || "An error occurred while validating your goal.");
       setIsCalculating(false);
     }
   };
@@ -259,6 +262,77 @@ export default function GoalValidation({ userGoal, onComplete, onBack, onExplore
                 </div>
                 <div className="h-4 bg-gray-200 rounded animate-pulse w-full"></div>
               </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // Error state
+  if (errorMessage) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        {/* Header */}
+        <header className="p-4 bg-white border-b border-gray-200">
+          <div className="flex items-center">
+            <button onClick={handleBack} className="text-gray-600">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <h1 className="flex-1 text-center text-lg font-bold text-gray-800">Goal Validation</h1>
+            <div className="w-6"></div>
+          </div>
+        </header>
+
+        {/* Error Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <div className="max-w-md mx-auto">
+            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-red-800 mb-2">Invalid Career Goal</h3>
+                  <p className="text-red-700 whitespace-pre-line">{errorMessage}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 mt-0.5">
+                  <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-blue-800">
+                    <strong>Examples of valid career goals:</strong><br/>
+                    Software Developer, Doctor, Teacher, Data Scientist, Marketing Manager, Civil Engineer, Graphic Designer, etc.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                onClick={onBack}
+                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                Go Back and Enter Valid Goal
+              </button>
+
+              <button
+                onClick={handleRetakeQuiz}
+                className="w-full bg-gray-200 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+              >
+                Retake Quiz
+              </button>
             </div>
           </div>
         </main>

@@ -253,12 +253,12 @@ export async function generatePersonaAndRoles(quizAnswers: Record<string, any>):
     
     try {
       console.log("Attempting to call Gemini API with key:", apiKey.substring(0, 5) + "...");
-      
+
       // Initialize the Google Generative AI client on the server
       const genAI = new GoogleGenerativeAI(apiKey);
-      
-      // Get the generative model
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      // Get the generative model - FIXED: Using gemini-2.5-flash
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
       
       // Generate the prompt
       const prompt = generateMasterPrompt(quizAnswers);
@@ -299,61 +299,87 @@ export async function generatePersonaAndRoles(quizAnswers: Record<string, any>):
 
 // Function to generate deep dive content for a specific role
 export async function generateRoleDeepDive(role: string, personaContext: string): Promise<AIDeepDiveResponse> {
+  console.log("\n🤖 ========== AI SERVICE: generateRoleDeepDive ==========");
+  console.log("📝 Role:", role);
+  console.log("📋 Persona Context:", personaContext.substring(0, 100) + "...");
+
   // Check if we're running on the server
   if (typeof window === 'undefined') {
+    console.log("✅ Running on server side");
+
     // Server-side: Get API key safely
     const apiKey = getApiKey();
-    
+
     // Server-side check
     if (!apiKey) {
-      console.warn("GEMINI_API_KEY is not set in environment variables");
-      // Return fallback data
-      return getFallbackDeepDive(role);
+      console.error("❌ GEMINI_API_KEY is not set in environment variables");
+      console.log("⚠️ Returning fallback data for role:", role);
+      const fallback = getFallbackDeepDive(role);
+      console.log("🤖 ========== AI SERVICE COMPLETE (FALLBACK) ==========\n");
+      return fallback;
     }
-    
+
+    console.log("✅ API Key found:", apiKey.substring(0, 10) + "...");
+
     try {
-      console.log("Attempting to call Gemini API for deep dive with key:", apiKey.substring(0, 5) + "...");
-      
+      console.log("🔧 Initializing Google Generative AI client...");
+
       // Initialize the Google Generative AI client on the server
       const genAI = new GoogleGenerativeAI(apiKey);
-      
-      // Get the generative model
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      
+
+      // Get the generative model - FIXED: Using gemini-2.5-flash
+      console.log("🔧 Getting generative model: gemini-2.5-flash");
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
       // Generate the prompt
+      console.log("📝 Generating deep dive prompt...");
       const prompt = generateDeepDivePrompt(role, personaContext);
-      
-      console.log("Generated deep dive prompt length:", prompt.length);
-      
+
+      console.log("✅ Generated deep dive prompt, length:", prompt.length);
+      console.log("📤 Sending request to Gemini API...");
+
       // Call the AI API
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
-      
-      console.log("Received deep dive response from Gemini API, length:", text.length);
-      
+
+      console.log("✅ Received response from Gemini API");
+      console.log("📏 Response length:", text.length);
+      console.log("📄 First 200 chars:", text.substring(0, 200));
+
       // Parse the JSON response
       // Remove any markdown formatting if present
+      console.log("🔧 Cleaning and parsing JSON response...");
       const cleanText = text.replace(/```json/g, '').replace(/```/g, '').trim();
       const parsedResponse = JSON.parse(cleanText);
-      
-      console.log("Successfully parsed deep dive AI response");
-      
+
+      console.log("✅ Successfully parsed deep dive AI response");
+      console.log("📊 Parsed role:", parsedResponse.role);
+      console.log("📊 Description length:", parsedResponse.description?.length || 0);
+      console.log("📊 Daily responsibilities count:", parsedResponse.dailyResponsibilities?.length || 0);
+      console.log("🤖 ========== AI SERVICE COMPLETE (SUCCESS) ==========\n");
+
       return parsedResponse;
     } catch (error: any) {
-      console.error("Error generating role deep dive:", error);
-      console.error("Error details:", {
+      console.error("\n❌ ========== AI SERVICE ERROR ==========");
+      console.error("🚨 Error generating role deep dive:", error);
+      console.error("📋 Error details:", {
         message: error.message,
         stack: error.stack,
         name: error.name
       });
+      console.error("🤖 ========== AI SERVICE ERROR END ==========\n");
+
       // Don't return fallback, re-throw the error so it's handled upstream
       throw error;
     }
   } else {
     // Client-side - return fallback data
-    console.warn("AI service should only be called on the server side");
-    return getFallbackDeepDive(role);
+    console.warn("⚠️ AI service should only be called on the server side");
+    console.log("⚠️ Returning fallback data for role:", role);
+    const fallback = getFallbackDeepDive(role);
+    console.log("🤖 ========== AI SERVICE COMPLETE (CLIENT-SIDE FALLBACK) ==========\n");
+    return fallback;
   }
 }
 
