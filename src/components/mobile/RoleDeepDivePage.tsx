@@ -28,43 +28,67 @@ export default function RoleDeepDivePage({
   useEffect(() => {
     const fetchDeepDiveData = async () => {
       try {
-        console.log("Fetching deep dive data for role:", roleName);
+        console.log("\n🎯 ========== CLIENT: Fetching Deep Dive Data ==========");
+        console.log("📝 Role Name:", roleName);
+        console.log("📋 Persona Context:", personaContext.substring(0, 100) + "...");
+
         setLoading(true);
         setError(null);
-        
+
         // Call our API route to generate AI deep dive content
-        console.log("Calling /api/ai-deep-dive...");
+        console.log("📤 Calling /api/ai-deep-dive...");
+        const requestBody = {
+          role: roleName,
+          personaContext: personaContext
+        };
+        console.log("📦 Request body:", requestBody);
+
         const response = await fetch('/api/ai-deep-dive', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ 
-            role: roleName,
-            personaContext: personaContext
-          }),
+          body: JSON.stringify(requestBody),
         });
 
-        console.log("Deep dive API response status:", response.status);
+        console.log("📥 Deep dive API response status:", response.status);
+        console.log("📥 Response OK:", response.ok);
 
         if (!response.ok) {
           const errorText = await response.text();
-          console.error("Deep dive API request failed:", errorText);
+          console.error("❌ Deep dive API request failed:", errorText);
           throw new Error(`API request failed with status ${response.status}: ${errorText}`);
         }
 
         const data = await response.json();
-        console.log("Received deep dive data:", data);
-        
+        console.log("✅ Received deep dive data:");
+        console.log("📊 Role:", data.role);
+        console.log("📊 Description:", data.description?.substring(0, 100) + "...");
+        console.log("📊 Daily Responsibilities:", data.dailyResponsibilities?.length || 0, "items");
+        console.log("📊 Salary Range:", data.salaryRange);
+        console.log("📊 Career Path:", data.careerPath?.length || 0, "items");
+        console.log("📊 Required Skills:", data.requiredSkills?.length || 0, "items");
+        console.log("📊 Education:", data.education?.substring(0, 50) + "...");
+        console.log("📊 Job Market:", data.jobMarket?.substring(0, 50) + "...");
+
         // Check if we got fallback data
         const isFallbackData = data.description?.includes("professional who specializes in this field");
+        const isHardcodedFallback = data.role === "Software Engineer" && roleName !== "Software Engineer";
+
         if (isFallbackData) {
-          console.log("WARNING: Received fallback/predefined data instead of AI-generated content");
+          console.warn("⚠️ WARNING: Received generic fallback data (from getFallbackDeepDive)");
         }
-        
+        if (isHardcodedFallback) {
+          console.warn("⚠️ WARNING: Received hardcoded 'Software Engineer' fallback instead of requested role:", roleName);
+        }
+
+        console.log("🎯 ========== CLIENT: Deep Dive Data Received ==========\n");
+
         setDeepDiveData(data);
       } catch (err) {
-        console.error('Error fetching deep dive data:', err);
+        console.error("\n❌ ========== CLIENT: Deep Dive Error ==========");
+        console.error('🚨 Error fetching deep dive data:', err);
+        console.error("🎯 ========== CLIENT: Deep Dive Error End ==========\n");
         setError('Failed to load role information. Please try again.');
         
         // Fallback to sample data

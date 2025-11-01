@@ -24,7 +24,12 @@ export async function validateUserGoal(
   answers: ValidationQuizAnswers
 ): Promise<AIValidationResponse> {
   try {
+    console.log("\n🎯 ========== CLIENT: Goal Validation Start ==========");
+    console.log("📝 User Goal:", userGoal);
+    console.log("📋 Answers:", answers);
+
     // Call the API route instead of calling AI directly
+    console.log("📤 Sending request to /api/validate-goal...");
     const response = await fetch('/api/validate-goal', {
       method: 'POST',
       headers: {
@@ -32,16 +37,35 @@ export async function validateUserGoal(
       },
       body: JSON.stringify({ userGoal, answers }),
     });
-    
+
+    console.log("📥 Response received");
+    console.log("✅ Response status:", response.status, response.statusText);
+    console.log("📊 Response OK:", response.ok);
+
     if (!response.ok) {
+      console.error("❌ Response not OK");
       const errorData = await response.json();
+      console.error("📝 Error data:", errorData);
+
+      // If it's an invalid career goal error, throw a specific error
+      if (errorData.error === 'Invalid career goal') {
+        const errorMessage = `${errorData.message}\n\n${errorData.suggestion || ''}`;
+        throw new Error(errorMessage);
+      }
+
       throw new Error(errorData.message || 'Failed to validate goal with AI API');
     }
-    
+
     const data = await response.json();
+    console.log("✅ Response data:", data);
+    console.log("🎯 ========== CLIENT: Goal Validation Success ==========\n");
     return data.validationResponse;
   } catch (error: any) {
-    console.error("AI validation failed, using fallback scoring:", error.message);
+    console.error("\n❌ ========== CLIENT: Goal Validation Error ==========");
+    console.error("🚨 Error Type:", error.constructor.name);
+    console.error("📝 Error Message:", error.message);
+    console.error("⚠️ Using fallback validation response");
+    console.error("🎯 ========== CLIENT: Goal Validation Error End ==========\n");
     // Fallback to simple scoring if AI validation fails
     return getFallbackValidationResponse(userGoal, answers);
   }

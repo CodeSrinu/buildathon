@@ -43,57 +43,82 @@ export default function AISkillAssessment({
   
   // Load questions from AI API
   useEffect(() => {
-    console.log("useEffect triggered for:", { roleId, roleName });
-    
+    console.log("\n🎯 ========== CLIENT: AISkillAssessment useEffect ==========");
+    console.log("📝 Role ID:", roleId);
+    console.log("📝 Role Name:", roleName);
+    console.log("📝 Domain ID:", domainId);
+
     const loadQuestions = async () => {
       try {
+        console.log("🔄 Setting loading state to true...");
         setIsLoading(true);
         setError(null);
-        
-        console.log("Loading questions for:", { roleId, roleName, domainId });
-        
+
+        console.log("📤 Calling /api/ai-skill-assessment/generate-questions...");
+        const requestBody = { roleId, roleName, domainId };
+        console.log("📦 Request body:", requestBody);
+
         // Call our API to generate career-specific questions
         const response = await fetch('/api/ai-skill-assessment/generate-questions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ roleId, roleName, domainId }),
+          body: JSON.stringify(requestBody),
         });
-        
-        console.log("Question API response status:", response.status);
-        
+
+        console.log("📥 Question API response status:", response.status);
+        console.log("📥 Response OK:", response.ok);
+
         if (!response.ok) {
-          throw new Error('Failed to load questions');
+          const errorText = await response.text();
+          console.error("❌ API request failed:", errorText);
+          throw new Error(`Failed to load questions: ${response.status} ${errorText}`);
         }
-        
+
         const data = await response.json();
-        console.log("Received questions data:", data);
-        
+        console.log("✅ Received questions data:");
+        console.log("📊 Questions count:", data.questions?.length || 0);
+        console.log("📊 First question:", data.questions?.[0]);
+
         setQuestions(data.questions);
-        
+
         // Initialize answers
         const initialAnswers: Record<string, boolean> = {};
         data.questions.forEach((q: SkillQuestion) => {
           initialAnswers[q.id] = false;
         });
         setAnswers(initialAnswers);
+
+        console.log("✅ Questions loaded and answers initialized");
+        console.log("🎯 ========== CLIENT: Questions Loaded Successfully ==========\n");
       } catch (err: any) {
-        console.error('Error loading questions:', err);
+        console.error("\n❌ ========== CLIENT: Error Loading Questions ==========");
+        console.error('🚨 Error:', err);
+        console.error('📋 Error message:', err.message);
+        console.error('📋 Error stack:', err.stack);
+
         setError('Failed to load assessment questions. Using default questions.');
-        
+
         // Fallback to default questions
+        console.log("⚠️ Using fallback default questions...");
         const defaultQuestions = getDefaultQuestions(roleId, roleName);
-        console.log("Using default questions:", defaultQuestions);
+        console.log("📊 Default questions count:", defaultQuestions.length);
+        console.log("📊 Default questions:", defaultQuestions);
+
         setQuestions(defaultQuestions);
-        
+
         // Initialize answers
         const initialAnswers: Record<string, boolean> = {};
         defaultQuestions.forEach(q => {
           initialAnswers[q.id] = false;
         });
         setAnswers(initialAnswers);
+
+        console.log("✅ Fallback questions loaded");
+        console.error("🎯 ========== CLIENT: Error Handled with Fallback ==========\n");
       } finally {
+        console.log("🔄 Setting loading state to false...");
         setIsLoading(false);
       }
     };
@@ -112,70 +137,100 @@ export default function AISkillAssessment({
   };
 
   const handleSubmit = async () => {
-    // Always allow submission - treat unchecked questions as "No" answers
-    // No validation needed since unchecked = No is the default behavior
-    
-    console.log("Submitting assessment with:", { 
-      questionCount: questions.length, 
+    console.log("\n🎯 ========== CLIENT: Submitting Skill Assessment ==========");
+    console.log("📊 Assessment stats:", {
+      questionCount: questions.length,
       answerCount: Object.keys(answers).length,
-      checkedCount: Object.values(answers).filter(Boolean).length,
-      hasOpenResponse: openResponse.trim().length > 0
+      yesCount: Object.values(answers).filter(Boolean).length,
+      noCount: Object.values(answers).filter(v => !v).length,
+      hasOpenResponse: openResponse.trim().length > 0,
+      openResponseLength: openResponse.trim().length
     });
-    
+
+    console.log("🔄 Setting analyzing state to true...");
     setIsAnalyzing(true);
     setError(null);
-    
+
     try {
-      // Call our API to analyze skills
-      // Send ALL questions and answers (unchecked = false = No)
-      console.log("Sending analysis request to API...");
+      console.log("📤 Calling /api/ai-skill-assessment/analyze-skills...");
+
+      const requestBody = {
+        roleId,
+        roleName,
+        domainId,
+        questions,
+        answers,
+        openResponse
+      };
+
+      console.log("📦 Request body:", {
+        roleId,
+        roleName,
+        domainId,
+        questionsCount: questions.length,
+        answersCount: Object.keys(answers).length,
+        openResponseLength: openResponse.length
+      });
+
       const response = await fetch('/api/ai-skill-assessment/analyze-skills', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          roleId, 
-          roleName, 
-          domainId, 
-          questions, 
-          answers, 
-          openResponse 
-        }),
+        body: JSON.stringify(requestBody),
       });
-      
-      console.log("Analysis API response status:", response.status);
-      
+
+      console.log("📥 Analysis API response status:", response.status);
+      console.log("📥 Response OK:", response.ok);
+
       if (!response.ok) {
-        throw new Error('Failed to analyze skills');
+        const errorText = await response.text();
+        console.error("❌ API request failed:", errorText);
+        throw new Error(`Failed to analyze skills: ${response.status} ${errorText}`);
       }
-      
+
       const result: SkillAssessmentResult = await response.json();
-      console.log("Received analysis result:", result);
-      
+      console.log("✅ Received analysis result:");
+      console.log("📊 Skill Level:", result.skillLevel);
+      console.log("📊 Analysis Summary:", result.analysisSummary?.substring(0, 100) + "...");
+      console.log("📊 Strengths count:", result.strengths?.length || 0);
+      console.log("📊 Learning Opportunities count:", result.learningOpportunities?.length || 0);
+
       // Store assessment data in localStorage for later use in career roadmap
       try {
+        console.log("💾 Storing assessment data in localStorage...");
         const assessmentData = {
           questions,
           answers,
           openResponse
         };
         localStorage.setItem('careerQuest_assessmentData', JSON.stringify(assessmentData));
-        console.log("Stored assessment data in localStorage for career roadmap");
+        console.log("✅ Stored assessment data in localStorage for career roadmap");
       } catch (err) {
-        console.error("Error storing assessment data in localStorage:", err);
+        console.error("❌ Error storing assessment data in localStorage:", err);
       }
-      
+
+      console.log("✅ Calling onSubmit with result...");
+      console.log("🎯 ========== CLIENT: Assessment Submitted Successfully ==========\n");
       onSubmit(result);
     } catch (err: any) {
-      console.error('Error analyzing skills:', err);
+      console.error("\n❌ ========== CLIENT: Error Analyzing Skills ==========");
+      console.error('🚨 Error:', err);
+      console.error('📋 Error message:', err.message);
+      console.error('📋 Error stack:', err.stack);
+
       setError('Failed to analyze your skills. Proceeding with default assessment.');
-      
+
       // Fallback to default analysis
+      console.log("⚠️ Using fallback default analysis...");
       const defaultResult = getDefaultAnalysis();
-      console.log("Using default analysis result:", defaultResult);
+      console.log("📊 Default result:", defaultResult);
+
+      console.log("✅ Calling onSubmit with default result...");
+      console.error("🎯 ========== CLIENT: Error Handled with Fallback ==========\n");
       onSubmit(defaultResult);
     } finally {
+      console.log("🔄 Setting analyzing state to false...");
       setIsAnalyzing(false);
     }
   };

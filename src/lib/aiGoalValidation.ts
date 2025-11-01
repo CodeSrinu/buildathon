@@ -25,20 +25,29 @@ export async function validateUserGoalWithAI(
   answers: ValidationQuizAnswers
 ): Promise<AIValidationResponse> {
   try {
+    console.log("\n🔍 ========== AI GOAL VALIDATION DEBUG START ==========");
+    console.log("📝 User Goal:", userGoal);
+    console.log("📋 Quiz Answers:", JSON.stringify(answers, null, 2));
+
     // Debug logging
-    console.log("Checking for GEMINI_API_KEY...");
-    console.log("process.env.GEMINI_API_KEY exists:", !!process.env.GEMINI_API_KEY);
-    console.log("process.env.GEMINI_API_KEY length:", process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.length : 0);
-    
+    console.log("\n🔑 Checking for GEMINI_API_KEY...");
+    console.log("✅ API Key exists:", !!process.env.GEMINI_API_KEY);
+    console.log("📏 API Key length:", process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.length : 0);
+
     // Check if API key is available
     if (!process.env.GEMINI_API_KEY) {
+      console.error("❌ GEMINI_API_KEY is not set in environment variables");
       throw new Error("GEMINI_API_KEY is not set in environment variables");
     }
 
     // Initialize the Google Generative AI client
+    console.log("\n🤖 Initializing Google Generative AI client...");
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    // Use the correct model name - gemini-pro is deprecated, use gemini-1.5-flash
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Use gemini-2.5-flash - the stable version available in the API
+    const modelName = "gemini-2.5-flash";
+    console.log("🎯 Using model:", modelName);
+    const model = genAI.getGenerativeModel({ model: modelName });
+    console.log("✅ Model initialized successfully");
     
     // Construct the prompt based on the template in a.md
     const prompt = `**ROLE:**
@@ -92,32 +101,68 @@ Your final output MUST be a single, clean, valid JSON object. Do not include any
 }`;
 
     // Generate content using the AI model
+    console.log("\n📤 Sending prompt to AI...");
+    console.log("📝 Prompt length:", prompt.length, "characters");
+
     const result = await model.generateContent(prompt);
+    console.log("✅ AI response received");
+
     const response = await result.response;
     const text = response.text();
-    
+
+    console.log("\n📥 Raw AI Response:");
+    console.log("─".repeat(80));
+    console.log(text);
+    console.log("─".repeat(80));
+    console.log("📏 Response length:", text.length, "characters");
+
     // Parse the JSON response
     // Note: The AI might include markdown formatting, so we need to extract the JSON
+    console.log("\n🔍 Extracting JSON from response...");
     const jsonStart = text.indexOf('{');
     const jsonEnd = text.lastIndexOf('}') + 1;
+    console.log("📍 JSON start position:", jsonStart);
+    console.log("📍 JSON end position:", jsonEnd);
+
     const jsonString = text.substring(jsonStart, jsonEnd);
-    
+    console.log("\n📄 Extracted JSON string:");
+    console.log(jsonString);
+
     // Validate that we have a valid JSON string
     if (jsonString.length === 0) {
+      console.error("❌ AI response did not contain valid JSON");
       throw new Error("AI response did not contain valid JSON");
     }
-    
+
+    console.log("\n🔄 Parsing JSON...");
     const parsedResponse = JSON.parse(jsonString);
-    
+    console.log("✅ JSON parsed successfully");
+    console.log("📊 Parsed response:", JSON.stringify(parsedResponse, null, 2));
+
     // Validate that the response has the expected structure
+    console.log("\n🔍 Validating response structure...");
     if (!parsedResponse.validationStatus || !parsedResponse.validationSummary || !parsedResponse.actionableInsights) {
+      console.error("❌ AI response does not have the expected structure");
+      console.error("Missing fields:", {
+        validationStatus: !parsedResponse.validationStatus,
+        validationSummary: !parsedResponse.validationSummary,
+        actionableInsights: !parsedResponse.actionableInsights
+      });
       throw new Error("AI response does not have the expected structure");
     }
-    
+
+    console.log("✅ Response structure validated");
+    console.log("🎯 Validation Status:", parsedResponse.validationStatus);
+    console.log("🔍 ========== AI GOAL VALIDATION DEBUG END ==========\n");
+
     return parsedResponse;
     
   } catch (error: any) {
-    console.error("Error validating user goal with AI:", error.message);
+    console.error("\n❌ ========== AI GOAL VALIDATION ERROR ==========");
+    console.error("🚨 Error Type:", error.constructor.name);
+    console.error("📝 Error Message:", error.message);
+    console.error("📚 Error Stack:", error.stack);
+    console.error("🔍 ========== AI GOAL VALIDATION ERROR END ==========\n");
     throw new Error(`Failed to validate user goal with AI: ${error.message}`);
   }
 }

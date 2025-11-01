@@ -18,8 +18,8 @@ console.log("Testing Gemini API connection with key:", apiKey.substring(0, 5) + 
 // Initialize the Google Generative AI client
 const genAI = new GoogleGenerativeAI(apiKey);
 
-// Get the generative model
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// Get the generative model - try gemini-pro instead
+const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 // Simple test prompt
 const prompt = "Say hello in 3 different languages";
