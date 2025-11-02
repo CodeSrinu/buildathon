@@ -1,121 +1,393 @@
-video-lecture?moduleId=lec_1&moduleName=Basic+Electrical+%26+Circuit+Theory+%28Ohm%27s%2C+Kirchhoff…:1 Refused to load the font 'https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2' because it violates the following Content Security Policy directive: "font-src 'self' https://fonts.gstatic.com data:".
+  GET https://career-advisor-ai0.vercel.app/api/auth/error 404 (Not Found)
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+t @ /_next/static/chunks…029118613857df.js:1
+i @ /_next/static/chunks…029118613857df.js:1
+Promise.then
+t @ /_next/static/chunks…029118613857df.js:1
+i @ /_next/static/chunks…029118613857df.js:1
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+(anonymous) @ /_next/static/chunks…029118613857df.js:1
+N @ /_next/static/chunks…029118613857df.js:1
+t.signIn @ /_next/static/chunks…029118613857df.js:1
+onClick @ /_next/static/chunks…fd8c365a2c3f91.js:1
+a_ @ /_next/static/chunks…5beab701d4bee3.js:1
+aR @ /_next/static/chunks…5beab701d4bee3.js:1
+(anonymous) @ /_next/static/chunks…5beab701d4bee3.js:1
+sF @ /_next/static/chunks…5beab701d4bee3.js:1
+sM @ /_next/static/chunks…5beab701d4bee3.js:1
+(anonymous) @ /_next/static/chunks…5beab701d4bee3.js:1
+o4 @ /_next/static/chunks…5beab701d4bee3.js:1
+iV @ /_next/static/chunks…5beab701d4bee3.js:1
+sU @ /_next/static/chunks…5beab701d4bee3.js:1
+uR @ /_next/static/chunks…5beab701d4bee3.js:1
+uM @ /_next/static/chunks…5beab701d4bee3.js:1
+error:1 Refused to load the font 'https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2' because it violates the following Content Security Policy directive: "font-src 'self' https://fonts.gstatic.com data:".
 
+8d464273-bef8-434a-80b5-8c792cdae796:7 Refused to connect to 'https://www.google-analytics.com/mp/collect?measurement_id=G-03XW3FWG7L&api_secret=Px06eCtvQLS0hVSB2MPj_g' because it violates the following Content Security Policy directive: "connect-src 'self' https://generativelanguage.googleapis.com".
+
+yTWFx @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+window.<computed> @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+(anonymous) @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+(anonymous) @ 8d464273-bef8-434a-80b5-8c792cdae796:10
+8d464273-bef8-434a-80b5-8c792cdae796:7 Fetch API cannot load https://www.google-analytics.com/mp/collect?measurement_id=G-03XW3FWG7L&api_secret=Px06eCtvQLS0hVSB2MPj_g. Refused to connect because it violates the document's Content Security Policy.
+yTWFx @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+window.<computed> @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+(anonymous) @ 8d464273-bef8-434a-80b5-8c792cdae796:7
+(anonymous) @ 8d464273-bef8-434a-80b5-8c792cdae796:10
 index.iife.js:40 content ui loaded
-content.js:13 Refused to load the script 'blob:http://localhost:3000/343d339c-1325-4007-a48f-89158bc6434a' because it violates the following Content Security Policy directive: "script-src-elem 'self' 'unsafe-inline' https://www.youtube.com https://s.ytimg.com https://www.google.com https://apis.google.com https://ssl.gstatic.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://*.youtube.com https://*.google.com https://*.gstatic.com https://youtube.com https://www.youtube-nocookie.com https://www.youtubeeducation.com https://www-onepick-opensocial.googleusercontent.com https://*.doubleclick.net https://*.googleapis.com https://www.googleadservices.com https://tpc.googlesyndication.com https://www.youtubekids.com".
-
-(anonymous) @ content.js:13
-await in (anonymous)
-(anonymous) @ content.js:13
-(anonymous) @ content.js:13
-(anonymous) @ content.js:13
-content.js:13 Warning: Extra attributes from the server: crxlauncher
-    at html
-    at RootLayout (Server)
-    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)
-    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)
-    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9)
-    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)
-    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)
-    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
-    at HotReload (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)
-    at Router (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:207:11)
-    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:113:9)
-    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)
-    at AppRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:577:13)
-    at ServerRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:112:27)
-    at Root (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:117:11)
-window.console.error @ app-index.js:33
-console.error @ hydration-error-info.js:63
-printWarning @ react-dom.development.js:94
-error @ react-dom.development.js:68
-warnForExtraAttributes @ react-dom.development.js:32731
-diffHydratedProperties @ react-dom.development.js:35117
-hydrateInstance @ react-dom.development.js:36127
-prepareToHydrateHostInstance @ react-dom.development.js:7246
-completeWork @ react-dom.development.js:19725
-completeUnitOfWork @ react-dom.development.js:25963
-performUnitOfWork @ react-dom.development.js:25759
-workLoopConcurrent @ react-dom.development.js:25734
-renderRootConcurrent @ react-dom.development.js:25690
-performConcurrentWorkOnRoot @ react-dom.development.js:24504
-workLoop @ scheduler.development.js:256
-flushWork @ scheduler.development.js:225
-performWorkUntilDeadline @ scheduler.development.js:534
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-performWorkUntilDeadline @ scheduler.development.js:539
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-performWorkUntilDeadline @ scheduler.development.js:539
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-performWorkUntilDeadline @ scheduler.development.js:539
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-performWorkUntilDeadline @ scheduler.development.js:539
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-performWorkUntilDeadline @ scheduler.development.js:539
-(anonymous) @ content.js:13
-d @ content.js:13
-f @ content.js:13
-postMessage
-(anonymous) @ content.js:13
-u.setImmediate @ content.js:13
-schedulePerformWorkUntilDeadline @ scheduler.development.js:562
-requestHostCallback @ scheduler.development.js:585
-unstable_scheduleCallback @ scheduler.development.js:444
-scheduleCallback$2 @ react-dom.development.js:7990
-scheduleTaskForRootDuringMicrotask @ react-dom.development.js:7954
-processRootScheduleInMicrotask @ react-dom.development.js:7827
-eval @ react-dom.development.js:8034
-page.tsx:36 VideoLecturePage mounted with parameters: {lectureId: 'lec_1', moduleId: 'lec_1', moduleName: "Basic Electrical & Circuit Theory (Ohm's, Kirchhoff's)", lectureTitle: 'Introduction to Electricity: Charge, Current, Voltage, Resistance'}
-page.tsx:61 
-🎯 ========== CLIENT: Loading Video Lecture ==========
-page.tsx:62 📝 Lecture ID: lec_1
-page.tsx:63 📝 Module ID: lec_1
-page.tsx:64 📝 Module Name: Basic Electrical & Circuit Theory (Ohm's, Kirchhoff's)
-page.tsx:65 📝 Lecture Title: Introduction to Electricity: Charge, Current, Voltage, Resistance
-page.tsx:67 🔄 Setting loading state to true...
-page.tsx:74 📝 Career Field from localStorage: General
-page.tsx:83 💾 Found cached lecture content in localStorage
-page.tsx:90 ✅ Cache is fresh (age: 86 minutes)
-page.tsx:91 📦 Using cached lecture data
-page.tsx:151 ✅ Received lecture data:
-page.tsx:152 📊 Lecture ID: default
-page.tsx:153 📊 Lecture Title: Introduction to Lecture
-page.tsx:154 📊 Video URL: https://www.youtube.com/embed/O_9u1P5Yj4Q
-page.tsx:155 📊 Duration: 15 minutes
-page.tsx:190 ✅ Setting lecture state...
-page.tsx:191 📊 Has Transcript: true
-page.tsx:192 📊 Has Cheat Sheet: true
-page.tsx:199 🎯 ========== CLIENT: Video Lecture Loaded Successfully ==========
-
-page.tsx:36 VideoLecturePage mounted with parameters: {lectureId: 'lec_1', moduleId: 'lec_1', moduleName: "Basic Electrical & Circuit Theory (Ohm's, Kirchhoff's)", lectureTitle: 'Introduction to Electricity: Charge, Current, Voltage, Resistance'}
-content.js:13 [Report Only] Refused to load the script 'blob:https://www.youtube.com/ac410f49-776b-43c2-88fb-996f3aa2f2c9' because it violates the following Content Security Policy directive: "script-src 'unsafe-eval' 'self' 'unsafe-inline' https://www.google.com https://apis.google.com https://ssl.gstatic.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://*.youtube.com https://*.google.com https://*.gstatic.com https://youtube.com https://www.youtube.com https://google.com https://*.doubleclick.net https://*.googleapis.com https://www.googleadservices.com https://tpc.googlesyndication.com https://www.youtubekids.com https://www.youtube-nocookie.com https://www.youtubeeducation.com https://www-onepick-opensocial.googleusercontent.com". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
-
+23-ad3038159d234645.js:1  GET https://career-advisor-ai0.vercel.app/profile?_rsc=pvd74 404 (Not Found)
+s @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:1
+u @ 23-ad3038159d234645.js:1
+s @ 23-ad3038159d234645.js:1
+enqueue @ 23-ad3038159d234645.js:1
+s @ 23-ad3038159d234645.js:1
+i @ 23-ad3038159d234645.js:1
+a @ 23-ad3038159d234645.js:1
+f @ 23-ad3038159d234645.js:1
+action @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+i @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+Promise.then
+c @ 23-ad3038159d234645.js:2
+i @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+Promise.then
+c @ 23-ad3038159d234645.js:2
+(anonymous) @ 23-ad3038159d234645.js:2
+dispatch @ 23-ad3038159d234645.js:2
+(anonymous) @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:1
+t.startTransition @ 23-ad3038159d234645.js:2
+prefetch @ 23-ad3038159d234645.js:1
+b @ 138-3b38a309d825a83c.js:1
+(anonymous) @ 138-3b38a309d825a83c.js:1
+aW @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+oe @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+id @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+T @ 23-ad3038159d234645.js:1
+849-00a04c5ed19ba321.js:1  GET https://career-advisor-ai0.vercel.app/api/auth/session 404 (Not Found)
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+c @ 849-00a04c5ed19ba321.js:1
+t.fetchData @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+T @ 849-00a04c5ed19ba321.js:1
+R @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+aW @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+oe @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+id @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+T @ 23-ad3038159d234645.js:1
+23-ad3038159d234645.js:1 [next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error Unexpected token '<', "<!DOCTYPE "... is not valid JSON {error: {…}, url: '/api/auth/session', message: `Unexpected token '<', "<!DOCTYPE "... is not valid JSON`}
+window.console.error @ 23-ad3038159d234645.js:1
+error @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+r.<computed> @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+s @ 849-00a04c5ed19ba321.js:1
+Promise.then
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+Promise.then
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+c @ 849-00a04c5ed19ba321.js:1
+t.fetchData @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+T @ 849-00a04c5ed19ba321.js:1
+R @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+aW @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+oe @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+id @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+T @ 23-ad3038159d234645.js:1
+849-00a04c5ed19ba321.js:1  POST https://career-advisor-ai0.vercel.app/api/auth/_log 405 (Method Not Allowed)
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+r.<computed> @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+s @ 849-00a04c5ed19ba321.js:1
+Promise.then
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+Promise.then
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+c @ 849-00a04c5ed19ba321.js:1
+t.fetchData @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+T @ 849-00a04c5ed19ba321.js:1
+R @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+aW @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+oe @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+id @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+T @ 23-ad3038159d234645.js:1
