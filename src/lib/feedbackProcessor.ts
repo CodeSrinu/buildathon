@@ -1,5 +1,5 @@
 // src/lib/feedbackProcessor.ts
-import { supabase } from './supabase';
+import { getSupabaseClient } from './supabase';
 import { UserFeedback } from './userData';
 import { RECOMMENDATION_ENGINE_VERSION } from './recommendationEngine';
 
@@ -110,7 +110,12 @@ export async function processFeedback(feedback: UserFeedback): Promise<boolean> 
 export async function getFeedbackStats(domainId: string): Promise<FeedbackStats> {
   try {
     // Get all feedback for a specific domain
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
+    const { data, error } = await supabaseClient
       .from('user_feedback')
       .select('*')
       .eq('domain_id', domainId);
@@ -139,11 +144,11 @@ export async function getFeedbackStats(domainId: string): Promise<FeedbackStats>
       };
     }
     
-    const totalRating = data.reduce((sum, fb) => sum + fb.rating, 0);
+    const totalRating = data.reduce((sum: number, fb: any) => sum + fb.rating, 0);
     const averageRating = totalRating / data.length;
     
-    const positiveFeedback = data.filter(fb => fb.rating >= 4).length;
-    const negativeFeedback = data.filter(fb => fb.rating <= 2).length;
+    const positiveFeedback = data.filter((fb: any) => fb.rating >= 4).length;
+    const negativeFeedback = data.filter((fb: any) => fb.rating <= 2).length;
     
     return {
       totalFeedback: data.length,
@@ -160,7 +165,12 @@ export async function getFeedbackStats(domainId: string): Promise<FeedbackStats>
 export async function analyzeFeedbackPatterns(): Promise<FeedbackPatterns> {
   try {
     // Get all feedback data
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
+    const { data, error } = await supabaseClient
       .from('user_feedback')
       .select('*');
 
@@ -179,7 +189,7 @@ export async function analyzeFeedbackPatterns(): Promise<FeedbackPatterns> {
     }
 
     // Map Supabase field names to our interface
-    const feedbackData: (UserFeedback & { id: string })[] = data.map(fb => ({
+    const feedbackData: (UserFeedback & { id: string })[] = data.map((fb: any) => ({
       id: fb.id,
       userId: fb.user_id,
       recommendationId: fb.recommendation_id,

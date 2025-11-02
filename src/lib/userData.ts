@@ -1,5 +1,5 @@
 // src/lib/userData.ts
-import { supabase } from './supabase';
+import { getSupabaseClient } from './supabase';
 import { PSYCHOLOGY_QUIZ_VERSION } from './psychologyScoring';
 import { RECOMMENDATION_ENGINE_VERSION } from './recommendationEngine';
 
@@ -105,7 +105,12 @@ export async function saveQuizResponse(userId: string, answers: Record<string, a
       user_agent_info: userAgentInfo || null
     };
 
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      return null;
+    }
+    const { data, error } = await supabaseClient
       .from('quiz_responses')
       .insert([quizData])
       .select('id')
@@ -134,7 +139,12 @@ export async function saveRecommendation(userId: string, persona: Persona, domai
       engine_version: RECOMMENDATION_ENGINE_VERSION
     };
 
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
+    const { data, error } = await supabaseClient
       .from('user_recommendations')
       .insert([recommendationData])
       .select('id')
@@ -180,7 +190,12 @@ export async function saveUserFeedback(
       session_duration: additionalFeedback?.sessionDuration || null
     };
 
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
+    const { data, error } = await supabaseClient
       .from('user_feedback')
       .insert([feedbackData])
       .select('id')
@@ -200,7 +215,12 @@ export async function saveUserFeedback(
 
 export async function getUserProfile(userId: string): Promise<UserProfile | null> {
   try {
-    const { data, error } = await supabase
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
+    const { data, error } = await supabaseClient
       .from('users')
       .select('*')
       .eq('id', userId)
@@ -243,8 +263,13 @@ export async function saveUserProfile(userId: string, profileData: Partial<UserP
       updated_at: new Date().toISOString(),
     };
 
+    const supabaseClient = getSupabaseClient();
+    if (!supabaseClient) {
+      console.error('Supabase client not available');
+      throw new Error('Supabase client not available');
+    }
     // If the user doesn't exist, insert a new record, otherwise update
-    const { error } = await supabase
+    const { error } = await supabaseClient
       .from('users')
       .upsert([{ id: userId, ...profileUpdateData }], { onConflict: 'id' });
 
