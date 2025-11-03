@@ -1,13 +1,23 @@
 // src/components/mobile/LoginScreen.tsx
 'use client';
 
+import { useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import EmailAuthScreen from './EmailAuthScreen';
 
 export default function LoginScreen() {
+  const [useEmailAuth, setUseEmailAuth] = useState(false);
+  const router = useRouter();
+
   const handleGoogleLogin = () => {
     // Use NextAuth for Google authentication
     signIn('google', { callbackUrl: '/' });
   };
+
+  if (useEmailAuth) {
+    return <EmailAuthScreen />;
+  }
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -30,8 +40,25 @@ export default function LoginScreen() {
           <h3 className="text-lg text-[#666666] mt-4">Your personalized AI career advisor.</h3>
         </div>
 
-        {/* Google Login Button */}
-        <div className="mt-12 w-full">
+        {/* Email Login Button */}
+        <div className="mt-12 w-full space-y-4">
+          <button 
+            onClick={() => setUseEmailAuth(true)}
+            className="w-full bg-[#3fe44a] text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-[#34c741]"
+          >
+            Sign in with Email
+          </button>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-[#e0e0e0]"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-[#666666]">OR</span>
+            </div>
+          </div>
+
+          {/* Google Login Button */}
           <button 
             onClick={handleGoogleLogin}
             className="w-full bg-white border border-[#e0e0e0] rounded-lg shadow-sm py-3 px-4 flex items-center justify-center space-x-3"
