@@ -1,37 +1,120 @@
-20:02:42.438 Running build in Washington, D.C., USA (East) – iad1
-20:02:42.450 Build machine configuration: 2 cores, 8 GB
-20:02:42.939 Cloning github.com/CodeSrinu/buildathon (Branch: master, Commit: 4905339)
-20:02:43.844 Cloning completed: 905.000ms
-20:02:50.657 Restored build cache from previous deployment (DzduCvxRizQP1ZEsebAS5Hs69CVV)
-20:02:51.508 Running "vercel build"
-20:02:51.905 Vercel CLI 48.8.0
-20:02:52.607 Installing dependencies...
-20:02:54.624 
-20:02:54.624 added 1 package in 2s
-20:02:54.625 
-20:02:54.625 181 packages are looking for funding
-20:02:54.625   run `npm fund` for details
-20:02:54.655 Detected Next.js version: 14.2.3
-20:02:54.662 Running "npm run build"
-20:02:54.771 
-20:02:54.772 > career-advisor@0.1.0 build
-20:02:54.772 > next build
-20:02:54.772 
-20:02:55.466   ▲ Next.js 14.2.3
-20:02:55.467 
-20:02:55.528    Creating an optimized production build ...
-20:03:10.400  ✓ Compiled successfully
-20:03:10.401    Linting and checking validity of types ...
-20:03:19.667 Failed to compile.
-20:03:19.668 
-20:03:19.668 ./src/lib/auth.ts:77:29
-20:03:19.668 Type error: Property 'id' does not exist on type 'Profile'.
-20:03:19.668 
-20:03:19.668 [0m [90m 75 |[39m       }[0m
-20:03:19.668 [0m [90m 76 |[39m       [36mif[39m (profile) {[0m
-20:03:19.668 [0m[31m[1m>[22m[39m[90m 77 |[39m         token[33m.[39msub [33m=[39m profile[33m.[39mid[33m;[39m[0m
-20:03:19.668 [0m [90m    |[39m                             [31m[1m^[22m[39m[0m
-20:03:19.669 [0m [90m 78 |[39m       }[0m
-20:03:19.669 [0m [90m 79 |[39m       [36mreturn[39m token[33m;[39m[0m
-20:03:19.669 [0m [90m 80 |[39m     }[33m,[39m[0m
-20:03:19.714 Error: Command "npm run build" exited with 1
+  GET https://career-advisor-ai0.vercel.app/api/auth/error 404 (Not Found)
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+Promise.then
+t @ 849-00a04c5ed19ba321.js:1
+i @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+(anonymous) @ 849-00a04c5ed19ba321.js:1
+N @ 849-00a04c5ed19ba321.js:1
+push.998.t.signIn @ 849-00a04c5ed19ba321.js:1
+j @ page-f4a394b3616a36ac.js:1
+a_ @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+aR @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+(anonymous) @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+sF @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+sM @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+(anonymous) @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o4 @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+iV @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+sU @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+uR @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+uM @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+error:1 Refused to load the font 'https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2' because it violates the following Content Security Policy directive: "font-src 'self' https://fonts.gstatic.com data:".
+
+c3c0d583-035d-42d1-9cd2-46128c4aff6b:7  POST https://www.google-analytics.com/mp/collect?measurement_id=G-03XW3FWG7L&api_secret=Px06eCtvQLS0hVSB2MPj_g net::ERR_BLOCKED_BY_CLIENT
+yTWFx @ c3c0d583-035d-42d1-9cd2-46128c4aff6b:7
+window.<computed> @ c3c0d583-035d-42d1-9cd2-46128c4aff6b:7
+(anonymous) @ c3c0d583-035d-42d1-9cd2-46128c4aff6b:7
+(anonymous) @ c3c0d583-035d-42d1-9cd2-46128c4aff6b:10
+index.iife.js:40 content ui loaded
+23-ad3038159d234645.js:1  GET https://career-advisor-ai0.vercel.app/profile?_rsc=pvd74 404 (Not Found)
+s @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:1
+u @ 23-ad3038159d234645.js:1
+s @ 23-ad3038159d234645.js:1
+enqueue @ 23-ad3038159d234645.js:1
+s @ 23-ad3038159d234645.js:1
+i @ 23-ad3038159d234645.js:1
+a @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:1
+action @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+i @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+Promise.then
+c @ 23-ad3038159d234645.js:2
+i @ 23-ad3038159d234645.js:2
+c @ 23-ad3038159d234645.js:2
+Promise.then
+c @ 23-ad3038159d234645.js:2
+(anonymous) @ 23-ad3038159d234645.js:2
+dispatch @ 23-ad3038159d234645.js:2
+(anonymous) @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:1
+(anonymous) @ 23-ad3038159d234645.js:2
+prefetch @ 23-ad3038159d234645.js:1
+b @ 138-3b38a309d825a83c.js:1
+(anonymous) @ 138-3b38a309d825a83c.js:1
+aW @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+oe @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+or @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+ol @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+id @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+o @ fd9d1056-3c8ef9fc8cb7cefe.js:1
+T @ 23-ad3038159d234645.js:1
