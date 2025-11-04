@@ -66,15 +66,29 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  jwt: {
+    // Set to true if using issued/expiration times for JWT
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token, user }) {
+      // Add the user id to the session object
       if (token?.sub && session.user) {
         session.user.id = token.sub;
       }
-      return session;
+      
+      // Ensure session is properly structured
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub || user?.id || session.user?.id
+        }
+      };
     },
-    async jwt({ token, account, profile }) {
+    async jwt({ token, account, profile, user }) {
       if (account) {
         token.accessToken = account.access_token;
       }
@@ -83,6 +97,12 @@ export const authOptions: NextAuthOptions = {
       if (profile) {
         token.sub = profile.sub ?? token.sub;
       }
+      
+      // Include user id in token for consistency
+      if (user) {
+        token.sub = user.id ?? token.sub;
+      }
+      
       return token;
     },
     async redirect({ url, baseUrl }) {
@@ -97,4 +117,6 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
     signIn: "/",
   },
+  // Add debug mode in development
+  debug: process.env.NODE_ENV === 'development',
 };
